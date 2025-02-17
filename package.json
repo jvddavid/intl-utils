@@ -1,0 +1,72 @@
+{
+  "name": "@jvddavid/intl-utils",
+  "license": "MIT",
+  "version": "1.0.15",
+  "description": "A simple intl-utils for Node.js",
+  "keywords": [
+    "intl-utils",
+    "node",
+    "nodejs",
+    "typescript"
+  ],
+  "author": {
+    "name": "João Victor Davi de Oliveira",
+    "email": "j.victordavid2@gmail.com",
+    "url": "https://github.com/jvddavid/intl-utils"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jvddavid/intl-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jvddavid/intl-utils/issues"
+  },
+  "homepage": "https://github.com/jvddavid/intl-utils",
+  "engines": {
+    "node": ">=18",
+    "npm": ">=8"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "exports": {
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "import": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@stylistic/eslint-plugin": "^3.1.0",
+    "@types/node": "^22.13.4",
+    "eslint": "^9.20.1",
+    "globals": "^15.15.0",
+    "pkgroll": "^2.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1",
+    "vitest": "^3.0.5"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run type:check && npm run lint && npm run build && npm run test",
+    "start": "node dist/index.mjs",
+    "type:check": "tsc --noEmit",
+    "build": "pkgroll --clean-dist --minify --target=es2024 --target=node22",
+    "lint": "eslint src tests",
+    "lint:fix": "eslint --fix src tests",
+    "dev": "tsx --watch src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  }
+}
