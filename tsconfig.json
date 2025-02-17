@@ -19,6 +19,10 @@
     // Disallow features that require cross-file awareness
     "isolatedModules": true,
 
+    // strict
+    "strict": true,
+
+    // paths
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

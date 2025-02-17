@@ -69,4 +69,14 @@ export const config = tseslint.config(
   {
     ignores: ['node_modules', 'dist', 'build', 'out', 'coverage'],
   },
+  {
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.eslint.json',
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
 )
+
+export default config
