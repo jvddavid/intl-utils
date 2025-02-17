@@ -1,46 +1,27 @@
-# Logger
+# Um plugin para o namespace Intl
 
-A abstraction of the pino logger to support standard output, file output and rotating file output by the options object.
+este plugin adiciona o CryptoFormat como uma extencao do NumberFormat, porem com suporte a crypto moedas
 
-## Install
+# Install
 
 ```bash
-npm i @jvddavid/logger
+npm i @jvddavid/intl-utils
 ```
 
-## Use
+# Use
 
-```javascript
-const logger = new Logger({
-  name: 'demo',
-  level: 'info',
-  standard: {
-    enabled: true,
-    pretty: true
-  },
-  files: [
-    {
-      path: 'logs/demo.log',
-      pretty: {
-        enabled: true,
-        colorize: true
-      },
-      level: 'info'
-    }
-  ],
-  folders: [
-    {
-      folder: 'logs',
-      pattern: 'log-%Y-%M-%d-%N.log',
-      maxSize: 10 * 1024 * 1024,
-      level: 'info'
-    }
-  ]
+```typescript
+const sut = new IntlPlugin({
+  locale: 'en-US',
+  timeZone: 'America/New_York',
 })
-logger.log(
-  {
-    message: 'Hello, world!'
-  },
-  'Hello, world!'
-)
+
+const actual = sut.CryptoFormat({
+  style: 'currency',
+  currency: 'BTC',
+  currencyDisplay: 'code',
+  minimumFractionDigits: 6,
+  maximumFractionDigits: 6,
+}).format(100.134121)
+expect(actual.startsWith('BTC')).toBeTruthy() // BTC 100.134121
 ```
